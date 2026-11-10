@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Office 文档信息清理器</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<nav class="site-header" aria-label="网站导航"><div class="header-inner"><a class="wordmark" href="./"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 4h10l6 6v17a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M19 4v7h6M12 16h8M12 21h5"/></svg><span>Office Cleaner</span></a><div class="header-tools"><span class="private-label"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2 4 4v5c0 4 6 8 6 8s6-4 6-8V4Z"/><path d="m7 9 2 2 4-4"/></svg>文件留在你的设备上</span><button type="button" id="theme-toggle" class="theme-toggle" aria-label="切换为深色外观" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4 8.2 8.2 0 1 0 20 14.2Z"/></svg></button></div></div></nav>
+<div class="wrap">
+  <header class="intro">
+    <h1>文档里的信息，<br class="mobile-break">由你决定。</h1>
+    <p class="product-title">Office 文档信息清理器</p>
+    <p class="intro-copy">查看并清理 Word、Excel 和 PowerPoint 的作者、时间与编辑记录。<br class="desktop-break">不上传文档，也不改写正文内容。</p>
+  </header>
+
+  <div class="grid">
+    <div class="col">
+      <section class="panel">
+        <h2>选择文档</h2>
+        <label class="drop" id="drop">
+          <input type="file" id="file" accept=".docx,.xlsx,.pptx">
+          <span class="upload-symbol" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M14 6h14l9 9v25a2 2 0 0 1-2 2H14a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3Z"/><path d="M28 6v10h9M24 32V21m-5 5 5-5 5 5"/></svg></span>
+          <strong>将文档拖到这里</strong><span class="choose-file">或点此选择文件</span>
+          <small>支持 .docx、.xlsx、.pptx</small>
+        </label>
+        <div class="fileinfo"><span class="badge sample" id="kind">示例数据</span><span class="fname" id="fname">还没有选择文件，右侧显示的是示例</span></div>
+      </section>
+
+      <section class="panel">
+        <h2>清理范围</h2><p class="section-copy">保留需要的信息，移除不想分享的记录。</p>
+        <ul class="opts" id="opts"></ul>
+      </section>
+    </div>
+
+    <div class="col">
+      <section class="panel">
+        <div class="inspector-heading"><div><h2>文档属性</h2><p class="section-copy">留空即删除，填写后会写入你指定的内容。</p></div><span class="sample-indicator" id="property-mode">预览示例</span></div>
+        <div id="fields"></div>
+      </section>
+    </div>
+  </div>
+
+  <section class="panel action-panel" aria-label="保存文档">
+    <div class="bar">
+      <button type="button" class="danger" id="wipe" disabled>清空全部信息</button>
+      <button type="button" id="stamp" disabled>设置占位时间</button>
+      <button type="button" id="reset" disabled>恢复原值</button>
+      <div class="out"><label for="outname">保存为</label><input id="outname" type="text" value="示例_clean.docx" disabled></div>
+      <button type="button" class="primary" id="save" disabled>保存清理后的副本</button>
+    </div>
+    <p id="status" role="status">先选择一个文件。</p>
+    <a id="download-ready" class="download-ready" hidden download>再次下载副本</a>
+  </section>
+
+  <details class="panel note"><summary>关于清理范围与 Office 属性显示</summary><div class="note-content">
+    <p><b>处理范围：</b>本工具处理支持的 Office 属性与常见隐藏记录，不保证清除正文、嵌入对象、图片或所有扩展格式里的身份信息。重要文件请先保留原件，并检查输出。</p>
+    <p><b>抹除后 Word 里还会显示什么。</b>抹除后文件内部已经没有创建时间、修改时间、上次保存者、修订号和编辑时长的记录。但 Word 的属性窗口不会留空：找不到记录时，创建时间和修改时间会显示电脑上这个文件本身的时间（也就是你下载或拷贝它的时间），修订号显示 1，编辑时间显示 0 分钟。这些是 Word 自己补的默认值，不是文件里的内容。</p>
+    <p><b>想让它显示指定的值</b>，就在上面对应的格子里填。点「设置占位时间」会把创建时间和修改时间都填成 2000-01-01 00:00:00，这样 Word 显示的是这个固定值，不再跟着下载时间变；也可以改成任何你选定的时间。</p>
+    <p><b>注意：</b>处理完的文件如果再用 Office 打开并保存，Office 会把当前用户名和时间重新写进去。提交前请用这里保存出来的那一份。</p>
+  </div></details>
+  <footer class="site-footer"><span>Office Cleaner</span><span>文档不上传 · 无需账户</span><a href="mailto:jiabin.ma@nus.edu.sg">反馈与联系</a></footer>
+</div>
+
+<script src="assets/vendor/jszip.min.js"></script>
+<script src="assets/app.js" defer></script>
+</body>
+</html>

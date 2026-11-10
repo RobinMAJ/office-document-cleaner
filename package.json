@@ -1,0 +1,8 @@
+{
+  "name": "office-document-cleaner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser-only Office document metadata cleaner",
+  "scripts": {"test": "node --test tests/metadata.test.cjs"},
+  "engines": {"node": ">=18"}
+}

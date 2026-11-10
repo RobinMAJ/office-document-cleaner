@@ -1,0 +1,9 @@
+{
+  "jszip": {
+    "version": "3.10.1",
+    "registry": "https://registry.npmjs.org/jszip/3.10.1",
+    "tarball_integrity": "sha512-xXDvecyTpGLrqFrvkrUSoxxfJI5AH7U8zxxtVclpsUtMCq4JQ290LY8AW5c7Ggnr/Y/oK+bQMbqK2qmtk3pN4g==",
+    "bundle_sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+    "license": "(MIT OR GPL-3.0-or-later)"
+  }
+}
