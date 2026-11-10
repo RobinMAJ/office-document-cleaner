@@ -9,3 +9,5 @@ Layout: one compact system-like toolbar; a purposeful title; left column for fil
 Interaction: press feedback begins immediately; dragging highlights the drop target; switching a cleanup option or field gives direct feedback; changes can be reverted without altering the source file. No artificial delays, entrance animation or looping decoration. Keyboard focus, 44 px touch targets, reduced-motion and reduced-transparency included.
 
 Reference skill: https://github.com/emilkowalski/apple-design ; local copy read from Chili's existing skill package. Implementation uses native HTML/CSS and original document-processing functions; no animation framework required for this utility.
+
+Owner refinement: keep every property group expanded; no per-category tabs. The privacy statement is a prominent green shield pill and remains legible on mobile.

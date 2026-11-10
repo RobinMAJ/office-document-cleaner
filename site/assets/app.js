@@ -218,7 +218,7 @@ function collect(){
     else{v[k]=raw;if(raw&&t==="int")ok=/^\d{1,9}$/.test(raw)&&(k!=="revision"||+raw>0);if(raw&&t==="ver")ok=/^\d{1,2}\.\d{4}$/.test(raw)}
     r.classList.toggle("bad",!ok);if(!ok&&!bad)bad=r;
   }
-  if(bad){const panel=bad.closest('[role="tabpanel"]');if(panel&&panel.hidden)document.getElementById(panel.getAttribute("aria-labelledby"))?.click();bad.querySelector("input").focus();const name=bad.querySelector("label").textContent;
+  if(bad){bad.querySelector("input").focus();const name=bad.querySelector("label").textContent;
     throw new Error(bad.dataset.type==="ver"?name+"的格式应为两位数字加四位小数，例如 16.0000。":name+"只能填"+(bad.dataset.k==="revision"?"大于 0 的":"")+"整数。")}
   const o={};for(const [k] of OPTS)o[k]=$("o-"+k).checked;
   return {v,o};
@@ -267,32 +267,5 @@ $("theme-toggle").addEventListener("click",()=>{
   $("theme-toggle").setAttribute("aria-label",dark?"切换为浅色外观":"切换为深色外观");
 });
 
-// Keep all real property fields in the document; tabs only change visibility.
-// Existing collect/reset/clear handlers continue to operate on every field.
-(()=>{
-  const host=$("fields"),groups=[...host.querySelectorAll(":scope > .group")];
-  const tabs=document.createElement("div");tabs.className="property-tabs";
-  tabs.setAttribute("role","tablist");tabs.setAttribute("aria-label","文档属性分类");
-  const buttons=groups.map((group,index)=>{
-    const button=document.createElement("button");button.type="button";
-    button.textContent=group.querySelector("h3").textContent;
-    button.id="property-tab-"+index;button.setAttribute("role","tab");
-    group.id="property-panel-"+index;group.setAttribute("role","tabpanel");
-    group.setAttribute("aria-labelledby",button.id);
-    button.setAttribute("aria-controls",group.id);
-    button.addEventListener("click",()=>select(index));tabs.append(button);return button;
-  });
-  function select(index){groups.forEach((group,i)=>{
-    group.hidden=i!==index;buttons[i].setAttribute("aria-selected",String(i===index));
-    buttons[i].tabIndex=i===index?0:-1;
-  });}
-  tabs.addEventListener("keydown",event=>{
-    const index=buttons.indexOf(event.target);
-    if(index<0||!["ArrowLeft","ArrowRight","Home","End"].includes(event.key))return;
-    event.preventDefault();const next=event.key==="Home"?0:event.key==="End"?buttons.length-1:(index+(event.key==="ArrowRight"?1:-1)+buttons.length)%buttons.length;
-    select(next);buttons[next].focus();
-  });
-  host.prepend(tabs);select(0);
-})();
 
 window.addEventListener("pagehide",()=>{if(pendingDownloadUrl)URL.revokeObjectURL(pendingDownloadUrl);});

@@ -5,15 +5,15 @@
     "deploy/nas_preflight.py": "024a197efb451ada8c3b092103211117764abf1080f10b7547457dd15e9d5c5c",
     "deploy/start_origin.py": "3470a1c51238bedea2bed0f910a7dce6ca58cee85e2c53a72ebb1d9a828839ff",
     "deploy/static_server.py": "e3a2b30a0ac53c759705bbe282fd204e0faee79232423fbba7420e0007a6f4c1",
-    "deploy/tailscale_node.py": "a1db8f2b2c5bbc0bdb4b665c3ccfa641d5a40535994d8f90ba4c94157c9c1866"
+    "deploy/tailscale_node.py": "12a2452aba695a9a226ec96286daf377c6e9b3c5e8e8cdb55d0a3f34fe7cfb4f"
   },
   "mode": "browser-only",
   "public_files": {
-    "assets/app.css": "b122115d0e403ddc0927c05c2f597be709c69cfd124ba28f54f277e62f01a75d",
-    "assets/app.js": "4b5ae7cee40ca68284e8fcbd86d9fde97422db6d07af3d20e4d87de9d1a0e7e2",
+    "assets/app.css": "85196c3ddba1e94cba4ae32432e7c581602439ac513ade90da9f1ff86f224378",
+    "assets/app.js": "c1bafda7fb0b08f9fa602361945f022fa40ec20bca1a43e2ed7515ff442add86",
     "assets/vendor/JSZIP-LICENSE.md": "566c953c6090b1218ca6217dd7359d45dde46581968586dc607d59a78af6a9c4",
     "assets/vendor/jszip.min.js": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
-    "index.html": "60fab05e13ff407e4168b3404471ed84fe93a0770e0924797826da3be4f0cde9"
+    "index.html": "8f84c64bbb9dd23b3205dd06bae565a7d3ae4cd3642f0235d6c2c8653fe45985"
   },
   "schema": "office-document-cleaner-v1",
   "uploads": false,

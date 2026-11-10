@@ -52,6 +52,7 @@ def verify():
 def ticks(pid):return (Path('/proc')/str(pid)/'stat').read_text().rpartition(')')[2].split()[19]
 def process_identity():
  record=read_private(STATE/'daemon.json');pid=record['pid'];proc=Path('/proc')/str(pid)
+ if record.get('argv_sha256')!=hashlib.sha256('\0'.join(ARGS).encode()).hexdigest() or record.get('cwd')!=str(RELEASE):raise RuntimeError('Private launcher provenance changed')
  try:
   if proc.stat().st_uid!=os.getuid() or (proc/'cmdline').read_bytes().rstrip(b'\0').split(b'\0')!=[x.encode() for x in ARGS] or ticks(pid)!=record['start_ticks']:raise RuntimeError('Node process identity changed')
  except FileNotFoundError:raise RuntimeError('Recorded node stopped; preserve state and review before recovery')
@@ -59,7 +60,7 @@ def process_identity():
   peer.connect(str(SOCKET));pid2,uid,_=struct.unpack('3i',peer.getsockopt(socket.SOL_SOCKET,socket.SO_PEERCRED,12))
  if (pid2,uid)!=(pid,os.getuid()):raise RuntimeError('Node socket peer changed')
  try:
-  if (proc/'cwd').resolve()!=RELEASE:raise RuntimeError('Node working directory changed')
+  if Path(os.readlink(proc/'cwd'))!=RELEASE:raise RuntimeError('Node working directory changed')
  except OSError as e:
   if e.errno not in (errno.EACCES,errno.EPERM):raise
  return pid

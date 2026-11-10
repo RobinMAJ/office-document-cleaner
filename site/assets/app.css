@@ -18,11 +18,15 @@ button{cursor:pointer;min-height:42px;border-radius:9px;border:1px solid var(--l
 @media(prefers-contrast:more){:root{--line:#8e8e93;--muted:#343437}.panel{box-shadow:none}}
 
 [hidden]{display:none!important}
-.property-tabs{display:flex;gap:3px;padding:4px;margin:18px 0 4px;background:var(--bg);border-radius:9px}
-.property-tabs>button{flex:1;min-width:0;min-height:37px;border:0;border-radius:6px;background:transparent;color:var(--muted);font-size:13px;padding:7px 8px;white-space:nowrap;font-weight:550}
-.property-tabs>button[aria-selected=true]{background:var(--panel);color:var(--ink);box-shadow:0 1px 4px #00000014}
-#fields>.group{border:0;padding:21px 0 3px;min-height:275px}
-#fields>.group>h3{display:none}
-@media(max-width:480px){.property-tabs>button{font-size:12px;padding-inline:5px}#fields>.group{min-height:0}}
 
 .download-ready{display:inline-flex;min-height:38px;align-items:center;font-size:13px;font-weight:550;margin-top:6px;color:var(--accent)}
+
+/* All properties remain visible, grouped without extra clicks. */
+#fields>.group{display:flex;min-height:0;padding:21px 0;border-bottom:1px solid var(--line)}
+#fields>.group:last-child{border-bottom:0;padding-bottom:0}
+#fields>.group>h3{display:block;font-size:15px;font-weight:650;margin:0 0 3px}
+.private-label{font-size:14px;font-weight:600;line-height:1.35;color:#126044;background:#e9f6ef;border:1px solid #c8e8d6;border-radius:9px;padding:9px 12px;gap:8px}
+.private-label svg{width:19px;height:19px;flex:0 0 19px;stroke-width:1.9}
+.privacy-short{display:none}
+:root[data-theme=dark] .private-label{color:#9be0b8;background:#17372a;border-color:#315d47}
+@media(max-width:480px){.private-label{font-size:12px;padding:8px 9px;gap:5px}.private-label svg{width:17px;height:17px;flex-basis:17px}.private-label .privacy-full{display:none}.private-label .privacy-short{display:inline}.header-tools{gap:6px}.wordmark{font-size:15px;gap:6px}.header-inner{gap:8px}}
