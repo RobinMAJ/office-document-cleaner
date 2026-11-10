@@ -1,5 +1,7 @@
 # Office Document Cleaner
 
+**[在线使用 / Open the website](https://office-document-cleaner.tailee7aa5.ts.net/)** — 无需登录，文档始终在你的设备上处理。No account required; documents stay on your device.
+
 A standalone, browser-only utility for inspecting and removing common metadata from Word (`.docx`), Excel (`.xlsx`) and PowerPoint (`.pptx`) packages. Chinese interface with an Apple-like system visual style, responsive forms and light/dark appearance.
 
 ## Privacy and scope
@@ -36,7 +38,7 @@ Target project: `/config/workspace/office-document-cleaner`.
 Versioned release: `deployment/20261110-v1`.
 Loopback static origin: `127.0.0.1:18815`.
 Independent node: `office-document-cleaner`, socket `/tmp/office-document-cleaner.sock`, dedicated UDP 41660.
-Intended HTTPS URL: `https://office-document-cleaner.tailee7aa5.ts.net/` (accept only after owner enrollment, publication and external verification).
+Public website: [office-document-cleaner.tailee7aa5.ts.net](https://office-document-cleaner.tailee7aa5.ts.net/).
 
 From that NAS release directory, as the project owner:
 
